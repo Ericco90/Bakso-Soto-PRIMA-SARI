@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakso & Soto PRIMA SARI - Nikmat & Gurih</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --secondary-yellow: #fbc02d;
+            --light-yellow: #fff9c4;
+            --white: #ffffff;
+            --dark: #333333;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fdfdfd;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* HEADER & NAV */
+        header {
+            background-color: var(--primary-red);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            color: var(--secondary-yellow);
+            font-size: 1.8rem; /* Ukuran diperbesar dari 1.2rem */
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            display: block;
+            color: var(--white);
+            font-size: 0.8rem; /* Sedikit disesuaikan agar proporsional */
+            font-weight: 500;
+            text-transform: none;
+            margin-top: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-yellow);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--secondary-yellow);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .btn-order {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background-color 0.3s;
+            border: 3px solid var(--secondary-yellow);
+        }
+
+        .btn-order:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        /* SECTION STYLING */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-yellow);
+        }
+
+        /* MENU GRID */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-img {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-info h3 {
+            color: var(--primary-red);
+            margin-bottom: 10px;
+        }
+
+        .menu-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+
+        .menu-price {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--dark);
+            background: var(--light-yellow);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* KEUNGGULAN */
+        .features {
+            background-color: var(--light-yellow);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            border-bottom: 5px solid var(--primary-red);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* TESTIMONI */
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .testi-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-yellow);
+        }
+
+        .stars {
+            color: var(--secondary-yellow);
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* LOKASI */
+        .location-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .address-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 50px 10% 20px;
+            text-align: center;
+        }
+
+        .footer-info h3 {
+            color: var(--secondary-yellow);
+            margin-bottom: 15px;
+        }
+
+        .footer-hours {
+            margin: 20px 0;
+            padding: 15px;
+            border-top: 1px solid #444;
+            border-bottom: 1px solid #444;
+            display: inline-block;
+        }
+
+        .wa-float {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .wa-float:hover {
+            background-color: #128c7e;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 3%;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="beranda">
+        <div class="logo">
+            PRIMA SARI
+            <span>Bakso Mie Ayam & Soto</span>
+        </div>
+        <div class="mobile-menu-btn">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#keunggulan">Keunggulan</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Mie Ayam & Bakso Sapi Asli – Gurih, Nikmat, dan Mengenyangkan!</h1>
+        <p>Cocok untuk makan siang, makan malam, dan kumpul bersama keluarga dengan cita rasa khas nusantara.</p>
+        <a href="https://wa.me/628123456789" class="btn-order">Pesan Sekarang</a>
+    </section>
+
+    <!-- MENU UNGGULAN -->
+    <section id="menu">
+        <div class="section-title">
+            <h2>Menu Unggulan</h2>
+        </div>
+        <div class="menu-grid">
+            <!-- Menu 1 -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1591814468924-cafb1d2273d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-info">
+                    <h3>Mie Ayam Spesial</h3>
+                    <p>Mie ayam dengan topping ayam gurih dan pangsit renyah.</p>
+                    <div class="menu-price">Rp 15.000</div>
+                </div>
+            </div>
+            <!-- Menu 2 -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-info">
+                    <h3>Bakso Sapi Asli</h3>
+                    <p>Bakso sapi kenyal dengan kuah kaldu gurih alami.</p>
+                    <div class="menu-price">Rp 18.000</div>
+                </div>
+            </div>
+            <!-- Menu 3 -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1629978453412-f04664796065?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-info">
+                    <h3>Mie Ayam Bakso</h3>
+                    <p>Perpaduan mie ayam dan bakso sapi dalam satu mangkuk.</p>
+                    <div class="menu-price">Rp 22.000</div>
+                </div>
+            </div>
+            <!-- Menu 4 -->
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1512058560366-cd2429597600?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-info">
+                    <h3>Bakso Urat Spesial</h3>
+                    <p>Bakso urat besar dengan rasa daging yang kuat dan mantap.</p>
+                    <div class="menu-price">Rp 20.000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN -->
+    <section id="keunggulan" class="features">
+        <div class="feature-item">
+            <span class="feature-icon">🥩</span>
+            <h3>Daging Sapi Asli</h3>
+            <p>Dibuat dari daging sapi pilihan tanpa bahan pengawet berbahaya.</p>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">🍲</span>
+            <h3>Kaldu Alami</h3>
+            <p>Kuah kaldu bening yang direbus berjam-jam menghasilkan rasa gurih alami.</p>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">💰</span>
+            <h3>Harga Terjangkau</h3>
+            <p>Porsi mengenyangkan dengan harga yang ramah di kantong semua kalangan.</p>
+        </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section id="testimoni">
+        <div class="section-title">
+            <h2>Kata Pelanggan</h2>
+        </div>
+        <div class="testimonials-container">
+            <div class="testi-card">
+                <p>"Baksone enak banget, kuahnya gurih! Bakso uratnya kerasa banget dagingnya. Langganan tiap minggu!"</p>
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <strong style="display:block; margin-top:10px;">- Budi Santoso</strong>
+            </div>
+            <div class="testi-card">
+                <p>"Mie ayamnya mantap, porsinya banyak. Ayam toppingnya nggak pelit. Tempatnya bersih dan nyaman buat keluarga."</p>
+                <span class="stars">⭐⭐⭐⭐⭐</span>
+                <strong style="display:block; margin-top:10px;">- Siti Aminah</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOKASI -->
+    <section id="lokasi">
+        <div class="section-title">
+            <h2>Lokasi Warung</h2>
+        </div>
+        <div class="location-content">
+            <div class="address-box">
+                <h3 style="color: var(--primary-red); margin-bottom: 10px;">📍 Alamat Kami</h3>
+                <p>Jl. Raya Utama No. 123, Central Park area,<br>Jakarta Selatan, Indonesia.</p>
+                <p style="margin-top: 15px;"><strong>Petunjuk:</strong> Seberang Indomaret, samping gerbang perumahan.</p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126906.9691461994!2d106.7891244!3d-6.2293867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%20Selatan%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-info">
+            <h3>Bakso & Soto PRIMA SARI</h3>
+            <p>Cita Rasa Orisinal, Kepuasan Maksimal.</p>
+            <div class="footer-hours">
+                <strong>Buka Setiap Hari</strong><br>
+                Jam 08.00 – 21.00 WIB
+            </div>
+            <br>
+            <a href="https://wa.me/628123456789" class="wa-float">
+                📱 Pesan via WhatsApp
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Bakso & Soto Prima Sari. Dibuat dengan ❤️ untuk pecinta kuliner.
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.backgroundColor = '#d32f2f';
+                nav.style.padding = '20px';
+                
+                const ul = nav.querySelector('ul');
+                ul.style.flexDirection = 'column';
+                ul.style.alignItems = 'center';
+                
+                const li = ul.querySelectorAll('li');
+                li.forEach(item => {
+                    item.style.margin = '10px 0';
+                });
+            }
+        });
+
+        // Close menu on click link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    nav.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
