@@ -2,7 +2,7 @@
 
 ## Preview Website
 
-![Preview Website](preview.png)
+![Preview Website](preview3.png)
 
 ## Deskripsi
 
